@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import BootstrapVue from 'bootstrap-vue' // added
 
 Vue.use(VueRouter)
+Vue.use(BootstrapVue) // added
 
+import 'bootstrap/dist/css/bootstrap.css' // added
+import 'bootstrap-vue/dist/bootstrap-vue.css' // added
 const routes = [
   {
     path: '/',
