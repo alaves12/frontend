@@ -9,10 +9,10 @@
                 </tr>
             </thead>
              <tbody>
-                <tr>
-                <td>{{definition}}</td>
-                <td>{{formula}}</td>
-                <td>{{answer}}</td>
+                <tr v-for="(result,index) in formobj" :key="index"> 
+                    <td>{{result.definition}}</td>
+                    <td>{{result.formula}}</td>
+                    <td>{{result.value}}</td>
                 </tr>
             </tbody>
         </table>
@@ -23,19 +23,9 @@
 export default {
     name:'Mytable',
     props: {
-    definition: {
-      type: String,
-      default: '',
-      required: false
-    },
-    formula: {
-      type: String,
-      default: '',
-      required: false
-    },
-    answer: {
-      type: Number,
-      default: '',
+    formobj: {
+      type: Array,
+      default: [],
       required: false
     }
     }

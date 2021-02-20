@@ -3,8 +3,10 @@
     <div class="row">
       <div class="col-lg-3"></div>
       <div class="col-lg-6">
-      <CalcInput @calculate = "answer = $event" @Showtable = "formarr = $event"></CalcInput>
-      <Mytable :definition="formarr.definition" :formula="formarr.formula" :answer="formarr.value"></Mytable>
+      <CalcInput :formobj="formarr" @calculate = "answer = $event" @Showtable = "formarr = $event"></CalcInput>
+      <br>
+      <Mytable :formobj="formarr"></Mytable>
+      <button  class="btn btn-primary" @click="deleteform">Delete</button>
       </div>
       <div class="col-lg-3"></div>
     </div>
@@ -28,7 +30,12 @@ export default {
   data() {
     return {
       answer : 0,
-      formarr :{},
+      formarr :[],
+    }
+  },
+  methods: {
+    deleteform(){
+      this.formarr = [];
     }
   }
 }

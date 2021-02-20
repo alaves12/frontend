@@ -22,15 +22,25 @@
 
 export default {
   name: 'CalcInput',
+  props: {
+    formobj:{
+      type:Array,
+      default:[],
+      required:false
+    }
+
+  },
   data() {
     return{
       answer: '',
       formula: '',
       count: 0,
+      formlist: []
     }
   },
   methods: {
      calculate(){
+      this.formlist = this.formobj;
       console.log(this.formula.split('\n'));
       let arr = this.formula.split('\n');
       let newarr = [];
@@ -56,8 +66,10 @@ export default {
       }
       this.answer = CalcEval(fn);
       formarr.value = this.answer;
+      this.formlist.push(formarr)
+
       this.$emit(`calculate`, this.answer);
-      this.$emit('Showtable', formarr);
+      this.$emit('Showtable', this.formlist);
     }
   }
   
